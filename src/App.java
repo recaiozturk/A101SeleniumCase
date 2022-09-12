@@ -26,6 +26,8 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
+        Controller controller= new Controller();
+
         System.setProperty("webdriver.chrome.driver","C://Users//90531//Desktop//chromedriver.exe");
 
         
@@ -48,21 +50,26 @@ public class App {
         // driver.manage().deleteAllCookies();
 
         //corap ten rengi
-        driver.get("https://www.a101.com.tr/giyim-aksesuar/penti-kadin-50-denye-pantolon-corabi-siyah/?integration_colour=S%C4%B0YAH#");
-        System.out.println("giyim-aksesuar/penti-kadin-50-denye-pantolon-corabi-siyah SAYFASI ACILDI");
+        // driver.get("https://www.a101.com.tr/giyim-aksesuar/penti-kadin-50-denye-pantolon-corabi-siyah/?integration_colour=S%C4%B0YAH#");
+        // System.out.println("giyim-aksesuar/penti-kadin-50-denye-pantolon-corabi-siyah SAYFASI ACILDI");
+        controller.GetStart(driver);
 
 
         //close cerez kullanım uyarısı
-        driver.findElement(By.xpath("//*[@id='CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll']")).click();
+        // driver.findElement(By.xpath("//*[@id='CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll']")).click();
+        controller.CloseCookieAlert(driver);
 
 
         //siyah oldugunu dpğrula
-        driver.findElement(By.xpath("/html/body/section/section[3]/div[2]/div[1]/div/div[3]/div[1]/div[1]/div[2]/div/div[2]/div/div[2]/div/div/div[1]/div/a/img")).click();
-        System.out.println("SİYAH DOĞRULANDI");
+        // driver.findElement(By.xpath("/html/body/section/section[3]/div[2]/div[1]/div/div[3]/div[1]/div[1]/div[2]/div/div[2]/div/div[2]/div/div/div[1]/div/a/img")).click();
+        // System.out.println("SİYAH DOĞRULANDI");
+        controller.CheckBlack(driver);
+
 
         //sepete ekle butonuna tıklanır
-        driver.findElement(By.xpath("/html/body/section/section[3]/div[2]/div[1]/div/div[3]/div[2]/div[1]/button")).click();
-        System.out.println("SEPETe EKLE BUTON TIKLANDI");
+        // driver.findElement(By.xpath("/html/body/section/section[3]/div[2]/div[1]/div/div[3]/div[2]/div[1]/button")).click();
+        // System.out.println("SEPETe EKLE BUTON TIKLANDI");
+        controller.AddToBasket(driver);
 
        //Specify the timout of the wait      
        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
@@ -73,24 +80,28 @@ public class App {
 
 
         //Sepet iGörüntüler Butonuna Tıklanır
-        driver.findElement(By.xpath("//*[@id='js-modal-basket']/div[3]/a[3]")).click();  
-        System.out.println("SEPETI GÖRÜNTÜLE TIKLANDI");
+        // driver.findElement(By.xpath("//*[@id='js-modal-basket']/div[3]/a[3]")).click();  
+        // System.out.println("SEPETI GÖRÜNTÜLE TIKLANDI");
+        controller.GoToBasket(driver);
         Bekle(driver);
 
         //Sepeti Onayla Butonuna Tıklanır
-        driver.findElement(By.xpath("/html/body/section/div[1]/div[2]/div/div[2]/div/a")).click();  
-        System.out.println("SEPETI ONAYLA TIKLANDI");
+        // driver.findElement(By.xpath("/html/body/section/div[1]/div[2]/div/div[2]/div/a")).click();  
+        // System.out.println("SEPETI ONAYLA TIKLANDI");
+        controller.AcceptToBasket(driver);
         Bekle(driver);
 
         //Uye Olmadan devam et Butonuna tıklanır
-        driver.findElement(By.xpath("/html/body/section/div[1]/div/div[1]/div[1]/div[2]/a")).click();  
-        System.out.println("UYEOLMADAN DEVAM ET TIKLNADI");
+        // driver.findElement(By.xpath("/html/body/section/div[1]/div/div[1]/div[1]/div[2]/a")).click();  
+        // System.out.println("UYEOLMADAN DEVAM ET TIKLNADI");
+        controller.ContuniewithoutSignIn(driver);
         Bekle(driver);
 
         //eposta set et ve devam et e tıkla
-        String  email="jsp10356@xcoxc.com";
-        driver.findElement(By.xpath("/html/body/section/div[1]/div/div[2]/div/div/form/div[1]/input")).sendKeys(email);
-        driver.findElement(By.xpath("/html/body/section/div[1]/div/div[2]/div/div/form/button")) .click();  // Devam Et Tıkla
+        // String  email="jsp10356@xcoxc.com";
+        // driver.findElement(By.xpath("/html/body/section/div[1]/div/div[2]/div/div/form/div[1]/input")).sendKeys(email);
+        // driver.findElement(By.xpath("/html/body/section/div[1]/div/div[2]/div/div/form/button")) .click();  // Devam Et Tıkla
+        controller.SetToMail(driver);
         Bekle(driver);
 
         //Adres olusturma
