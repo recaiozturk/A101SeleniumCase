@@ -2,6 +2,7 @@ import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import javax.lang.model.element.Element;
+import javax.swing.JOptionPane;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,6 +24,8 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         Controller controller= new Controller();
+
+        
 
         System.setProperty("webdriver.chrome.driver","C://Users//90531//Desktop//chromedriver.exe");
 
@@ -58,7 +61,8 @@ public class App {
         WaitLittleBit(driver);
 
         controller.SetAdress(driver);
-        controller.WaitWithThread(1000);
+        
+        controller.SetCartDetail(driver);
 
         controller.ConfirmLastPage(driver);
         
