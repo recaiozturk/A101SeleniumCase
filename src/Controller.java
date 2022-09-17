@@ -1,7 +1,10 @@
 import java.time.Duration;
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 public class Controller {
@@ -119,15 +122,44 @@ public class Controller {
 
     }
 
+    //Adres bilgilerini Giriyoruz
+    public void SetCartDetail(WebDriver driver){
+
+        //İsim Soyisim giriyoruz
+        String  fullName="Jhon Due";
+        driver.findElement(By.xpath("/html/body/section/section/div/div[3]/div[2]/div[1]/div[2]/form[1]/div[1]/div[2]/div[6]/div[1]/label/input")).sendKeys(fullName);
+
+        //kart numarasını giriyoruz
+        driver.findElement(By.xpath("/html/body/section/section/div/div[3]/div[2]/div[1]/div[2]/form[1]/div[1]/div[2]/div[6]/div[2]/label/input[1]")).sendKeys("1212 1221 2122 1121");
+
+        //kart ay giriyoruz
+        driver.findElement(By.xpath("/html/body/section/section/div/div[3]/div[2]/div[1]/div[2]/form[1]/div[1]/div[2]/div[6]/div[3]/div[2]/select")).sendKeys("1");
+
+        //kart yıl giriyoruz
+        driver.findElement(By.xpath("/html/body/section/section/div/div[3]/div[2]/div[1]/div[2]/form[1]/div[1]/div[2]/div[6]/div[3]/div[3]/select")).sendKeys("2025");
+
+        //kart CVC giriyoruz
+        driver.findElement(By.xpath("/html/body/section/section/div/div[3]/div[2]/div[1]/div[2]/form[1]/div[1]/div[2]/div[6]/div[4]/label/input")).sendKeys("123");
+        WaitWithThread(1000);
+
+        //sözleşmeyi onaylıyoruz
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        String el = "document.getElementById('agrement2').click()";
+        js.executeScript(el);
+        System.out.println("KART BİLGİLERİ GİRİLDİ"); 
+        WaitWithThread(1000);
+
+
+    }
+
     //Testin Sonuna Gelindiğini Onayla
     public void ConfirmLastPage(WebDriver driver){
 
         String  confirmText =driver.findElement(By.xpath("/html/body/section/section/div/div[3]/div[2]/div[1]/div[2]/form[1]/div[1]/div[2]/div[5]/div/div[2]/b")).getText();
-
-        WaitWithThread(1000);
-
+        WaitWithThread(1000);         
         System.out.println( confirmText + "  yazısı teyit edildi");
         System.out.println("TEST BİTTİ");
+        JOptionPane.showMessageDialog(null, "TEST BİTTİ");
     }
 
     //ThreadSleep ile bekleme
