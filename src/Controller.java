@@ -72,26 +72,33 @@ public class Controller {
     public void SetAdress(WebDriver driver){
 
         driver.findElement(By.xpath("/html/body/section/section/div/div[2]/div/div[1]/div/div[1]/div[2]/ul[2]/li/a")).click();  //Yeni adres olustur butonuna tıklıyoruz
+
         //Adres Başlığı
         driver.findElement(By.xpath("//*[@id='js-orders-modal-container']/div/div[2]/form/div[2]/div/div/label/input")).sendKeys("Test Adres Başlık");
+
         //İsim Giriyoruz
         driver.findElement(By.xpath("//*[@id='js-orders-modal-container']/div/div[2]/form/div[3]/div[1]/div/label/input")).sendKeys("Test İsim");
+
         //Soyİsim Giriyoruz
         driver.findElement(By.xpath("//*[@id='js-orders-modal-container']/div/div[2]/form/div[3]/div[2]/div/label/input")).sendKeys("Test Soyİsim");
+        
         //Telefon Giriyoruz
         driver.findElement(By.xpath("//*[@id='js-orders-modal-container']/div/div[2]/form/div[4]/div/div/label/input")).sendKeys("111-111-1111");
+
         //İl Giriyoruz
         driver.findElement(By.xpath("//*[@id='js-orders-modal-container']/div/div[2]/form/div[5]/div[1]/div/label/div/select/option[2]")).click();       
+
         //İlçe Giriyoruz
-        driver.findElement(By.xpath("//*[@id='js-orders-modal-container']/div/div[2]/form/div[5]/div[2]/div/label/div/select/option[2]")).click();      
-        //Mahalle Giriyoruz       
+        driver.findElement(By.xpath("//*[@id='js-orders-modal-container']/div/div[2]/form/div[5]/div[2]/div/label/div/select/option[2]")).click();                   
         WaitWithThread(1000);
 
+        //Mahalle Giriyoruz 
         driver.findElement(By.xpath("//*[@id='js-orders-modal-container']/div/div[2]/form/div[6]/label/div/select/option[2]")).click();
+
         //Açık Adres Giriyoruz
-        randomNumber = GenerateRandomNumber(1000);
-        
+        randomNumber = GenerateRandomNumber(1000);    
         driver.findElement(By.xpath("//*[@id='js-orders-modal-container']/div/div[2]/form/div[7]/label/textarea")).sendKeys("Test Adresidir"+randomNumber);
+
         //posta kodu giriyoruz
         driver.findElement(By.xpath("//*[@id='js-orders-modal-container']/div/div[2]/form/div[8]/div/div/label/input")).sendKeys("11111");
         WaitWithThread(1000);
@@ -107,12 +114,12 @@ public class Controller {
         //Keydet ve Devam et Butonuno Tıklıyoruz
         driver.findElement(By.xpath("/html/body/section/section/div/div[2]/div/div[1]/div/div[2]/form/div[2]/button")).click();
         WaitWithThread(1000);
-
         System.out.println("ADRES GİRİLİP KAYDEDİLDİ-DEVAM EDİLİYOR");  
 
 
     }
 
+    //Testin Sonuna Gelindiğini Onayla
     public void ConfirmLastPage(WebDriver driver){
 
         String  confirmText =driver.findElement(By.xpath("/html/body/section/section/div/div[3]/div[2]/div[1]/div[2]/form[1]/div[1]/div[2]/div[5]/div/div[2]/b")).getText();

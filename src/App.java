@@ -17,21 +17,14 @@ import org.openqa.selenium.Keys;
 import com.google.common.annotations.VisibleForTesting;
 
 
-
 public class App {
 
-    
-
-    
 
     public static void main(String[] args) throws Exception {
 
         Controller controller= new Controller();
 
         System.setProperty("webdriver.chrome.driver","C://Users//90531//Desktop//chromedriver.exe");
-
-        
-
 
         ChromeOptions options  = new ChromeOptions();
         //options.addArguments("incognito");
